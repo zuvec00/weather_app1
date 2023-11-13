@@ -38,6 +38,7 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   String getWeatherAnimation(String? mainCondition) {
+    print(mainCondition);
     if (mainCondition == null) return 'assets/sunny.json';
     switch (mainCondition.toLowerCase()) {
       case 'clouds':
@@ -84,7 +85,7 @@ class _WeatherPageState extends State<WeatherPage> {
                     ),
                     Text(
                       _weather?.cityName ?? "loading city...",
-                      style: TextStyle(fontSize: 30, color: Colors.grey[600]),
+                      style: TextStyle(fontSize: 40, color: Colors.grey[600]),
                     ),
                   ],
                 ),
@@ -95,14 +96,14 @@ class _WeatherPageState extends State<WeatherPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Lottie.asset('assets/thunder2.json'),
+                Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('${_weather?.temperature.round()}˚C',
-                    style: TextStyle(fontSize: 50, color: Colors.grey[800])),
+                    style: TextStyle(fontSize: 70, color: Colors.grey[800])),
               ],
             ),
           ]),
